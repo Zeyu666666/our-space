@@ -1,6 +1,10 @@
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    /* This loads your photo */
+    background: url('background.jpg') no-repeat center center fixed; 
+    /* This makes sure the photo covers the whole screen */
+    background-size: cover; 
+    
     display: flex;
     justify-content: center;
     align-items: center;
