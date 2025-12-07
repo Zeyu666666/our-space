@@ -84,29 +84,31 @@ body {
     margin: 0;          /* Reset any old margins */
 }
 
-/* 2. The Camera Button (Bottom Right) */
 #bg-btn {
+    /* POSITIONING (You can still change these numbers!) */
     position: absolute;
-    bottom: 30px;       /* Distance from bottom */
-    right: 30px;        /* Distance from right */
+    bottom: 30px;
+    right: 30px;
 
-    /* Make it a round circle */
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    /* TEXT STYLE (No more Camera Icon) */
+    background: rgba(255, 255, 255, 0.9); /* White background */
+    padding: 12px 24px;       /* Spacing inside the button */
+    border-radius: 30px;      /* Makes it a "Pill" shape */
+    font-size: 0.9rem;        /* Makes the text visible again */
+    font-weight: bold;
+    color: #333;              /* Dark grey text */
     
-    /* Make it look like a Camera Icon */
-    background-color: white;
-    background-image: url('https://cdn-icons-png.flaticon.com/512/45/45010.png');
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-    
+    /* CLEANUP */
     border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Drop shadow */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Nice shadow */
     cursor: pointer;
-    font-size: 0;       /* Hides the text "Change Background" inside */
     z-index: 100;
+}
+
+/* Hover Effect */
+#bg-btn:hover {
+    transform: translateY(-2px); /* Floats up slightly */
+    background: white;
 }
 
 /* Hover Effect (Optional) */
