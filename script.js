@@ -66,7 +66,7 @@ window.toggleLanguage = function() {
 function updateText() {
     const t = translations[currentLang];
     document.getElementById('lang-btn').innerText = (currentLang === 'en' ? "Switch to Chinese" : "Switch to English");
-    document.getElementById('title').innerText = (currentLang === 'en' ? "Zeyu & Xiaodi' Journey" : "腊肠和小猪的奇幻之旅");
+    document.getElementById('title').innerText = (currentLang === 'en' ? "Zeyu & Xiaodi' Journey" : "腊肠与小猪的奇幻之旅");
     document.getElementById('label').innerText = (currentLang === 'en' ? "Days Together" : "在一起的天数");
     document.getElementById('subtext').innerText = (currentLang === 'en' ? "Since August 17, 2024" : "起始日：2024年8月17日");
     document.getElementById('bg-btn').innerText = t.bgBtn;
