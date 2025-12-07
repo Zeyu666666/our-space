@@ -1,11 +1,10 @@
 // ==========================================
 // 1. IMPORTS & CONFIG
 // ==========================================
-// We use these "https" links so you don't need to install anything
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// YOUR SPECIFIC KEYS (I added the databaseURL for you)
+// YOUR SPECIFIC KEYS
 const firebaseConfig = {
   apiKey: "AIzaSyC6iW7TxWmEN1NjmvBHCRmCg067ooOU_OE",
   authDomain: "our-space-us.firebaseapp.com",
@@ -45,7 +44,8 @@ const translations = {
     }
 };
 
-let currentLang = 'en';
+// *** CHANGED THIS TO 'cn' FOR YOU ***
+let currentLang = 'cn';
 
 // ==========================================
 // 3. LOGIC (Counter & Language)
@@ -79,7 +79,7 @@ window.checkAuth = function() {
 }
 
 // ==========================================
-// 4. DATABASE SAVE LOGIC (The Fix)
+// 4. DATABASE SAVE LOGIC
 // ==========================================
 
 // A. Listen for Changes (Updates the screen when database changes)
@@ -104,23 +104,19 @@ document.getElementById('bg-input').addEventListener('change', function(event) {
         img.src = readerEvent.target.result;
         
         img.onload = function() {
-            // Shrink image to max 800px wide (prevents database freeze)
+            // Shrink image to max 800px wide
             const canvas = document.createElement('canvas');
             const MAX_WIDTH = 800; 
             const scaleSize = MAX_WIDTH / img.width;
             
-            // Calculate new size
             canvas.width = MAX_WIDTH;
             canvas.height = img.height * scaleSize;
 
-            // Draw to canvas
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            // Convert to text string (JPEG quality 0.6)
             const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
 
-            // Save to Database
             set(ref(db, 'background_image'), {
                 base64: dataUrl,
                 time: Date.now()
