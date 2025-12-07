@@ -4,7 +4,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// YOUR SPECIFIC KEYS
+// YOUR KEYS
 const firebaseConfig = {
   apiKey: "AIzaSyC6iW7TxWmEN1NjmvBHCRmCg067ooOU_OE",
   authDomain: "our-space-us.firebaseapp.com",
@@ -15,7 +15,6 @@ const firebaseConfig = {
   appId: "1:552504280642:web:b801a79591ca0bdaddcfdb"
 };
 
-// Initialize the App
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
@@ -27,28 +26,33 @@ const SECRET_CODE = "0817";
 
 const translations = {
     en: {
+        btn: "Change Language", // Button text when in English mode
+        title: "Zeyu & Xiaodi' Journey",
+        label: "Days Together",
+        subtext: "Since August 17, 2024",
         bgBtn: "Change Background",
         prompt: "Enter password:",
         error: "Wrong password!",
         uploading: "Compressing & Saving... please wait!",
         success: "Background updated!",
-        tooBig: "Image is too big! Please try a smaller one."
     },
     cn: {
+        btn: "切换语言", // <--- UPDATED: Now in Chinese!
+        title: "腊肠与小猪的奇幻之旅",
+        label: "在一起的天数",
+        subtext: "起始日：2024年8月17日",
         bgBtn: "更换背景",
         prompt: "请输入密码:",
         error: "密码错误!",
         uploading: "正在压缩并保存... 请稍候!",
         success: "背景已更新!",
-        tooBig: "图片太大了! 请试一张小一点的。"
     }
 };
 
-// *** CHANGED THIS TO 'cn' FOR YOU ***
-let currentLang = 'cn';
+let currentLang = 'cn'; // Start in Chinese
 
 // ==========================================
-// 3. LOGIC (Counter & Language)
+// 3. LOGIC
 // ==========================================
 function updateCounter() {
     const now = new Date();
@@ -57,7 +61,6 @@ function updateCounter() {
     document.getElementById('days-count').innerText = diffDays;
 }
 
-// Make these functions available to the HTML button
 window.toggleLanguage = function() {
     currentLang = currentLang === 'en' ? 'cn' : 'en';
     updateText();
@@ -65,10 +68,10 @@ window.toggleLanguage = function() {
 
 function updateText() {
     const t = translations[currentLang];
-    document.getElementById('lang-btn').innerText = (currentLang === 'en' ? "Switch to Chinese" : "Switch to English");
-    document.getElementById('title').innerText = (currentLang === 'en' ? "Zeyu & Xiaodi' Journey" : "腊肠与小猪的奇幻之旅");
-    document.getElementById('label').innerText = (currentLang === 'en' ? "Days Together" : "在一起的天数");
-    document.getElementById('subtext').innerText = (currentLang === 'en' ? "Since August 17, 2024" : "起始日：2024年8月17日");
+    document.getElementById('lang-btn').innerText = t.btn; // Using the new translation logic
+    document.getElementById('title').innerText = t.title;
+    document.getElementById('label').innerText = t.label;
+    document.getElementById('subtext').innerText = t.subtext;
     document.getElementById('bg-btn').innerText = t.bgBtn;
 }
 
@@ -79,10 +82,8 @@ window.checkAuth = function() {
 }
 
 // ==========================================
-// 4. DATABASE SAVE LOGIC
+// 4. DATABASE LOGIC
 // ==========================================
-
-// A. Listen for Changes (Updates the screen when database changes)
 const bgRef = ref(db, 'background_image');
 onValue(bgRef, (snapshot) => {
     const data = snapshot.val();
@@ -91,7 +92,6 @@ onValue(bgRef, (snapshot) => {
     }
 });
 
-// B. Shrink & Save Image
 document.getElementById('bg-input').addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -102,19 +102,14 @@ document.getElementById('bg-input').addEventListener('change', function(event) {
     reader.onload = function(readerEvent) {
         const img = new Image();
         img.src = readerEvent.target.result;
-        
         img.onload = function() {
-            // Shrink image to max 800px wide
             const canvas = document.createElement('canvas');
             const MAX_WIDTH = 800; 
             const scaleSize = MAX_WIDTH / img.width;
-            
             canvas.width = MAX_WIDTH;
             canvas.height = img.height * scaleSize;
-
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
             const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
 
             set(ref(db, 'background_image'), {
@@ -130,5 +125,4 @@ document.getElementById('bg-input').addEventListener('change', function(event) {
     reader.readAsDataURL(file);
 });
 
-// Start the counter
 updateCounter();
