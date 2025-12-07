@@ -4,7 +4,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-// YOUR KEYS
+// YOUR KEYS (US Project)
 const firebaseConfig = {
   apiKey: "AIzaSyC6iW7TxWmEN1NjmvBHCRmCg067ooOU_OE",
   authDomain: "our-space-us.firebaseapp.com",
@@ -25,8 +25,9 @@ const startDate = new Date('2024-08-17');
 const SECRET_CODE = "0817"; 
 
 const translations = {
+    // ENGLISH MODE
     en: {
-        btn: "Change Language", // Button text when in English mode
+        btn: "切换语言", // Button shows: Switch to Chinese
         title: "Zeyu & Xiaodi' Journey",
         label: "Days Together",
         subtext: "Since August 17, 2024",
@@ -36,8 +37,9 @@ const translations = {
         uploading: "Compressing & Saving... please wait!",
         success: "Background updated!",
     },
+    // CHINESE MODE
     cn: {
-        btn: "切换语言", // <--- UPDATED: Now in Chinese!
+        btn: "Change Language", // Button shows: Switch to English
         title: "腊肠与小猪的奇幻之旅",
         label: "在一起的天数",
         subtext: "起始日：2024年8月17日",
@@ -68,7 +70,7 @@ window.toggleLanguage = function() {
 
 function updateText() {
     const t = translations[currentLang];
-    document.getElementById('lang-btn').innerText = t.btn; // Using the new translation logic
+    document.getElementById('lang-btn').innerText = t.btn; 
     document.getElementById('title').innerText = t.title;
     document.getElementById('label').innerText = t.label;
     document.getElementById('subtext').innerText = t.subtext;

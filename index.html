@@ -2,27 +2,19 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Us</title>
-    <!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Zeyu & Xiaodi</title>
     
     <link rel="apple-touch-icon" sizes="180x180" href="apple-icon.png">
     <link rel="icon" type="image/png" href="apple-icon.png">
-    <link rel="stylesheet" href="style.css">
-</head>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <button id="lang-btn" onclick="toggleLanguage()">切换语言</button>
+    <button id="lang-btn" onclick="toggleLanguage()">Change Language</button>
 
+    <div class="container">
         <div class="content">
             <h1 id="title">腊肠与小猪的奇幻之旅</h1>
             
@@ -32,21 +24,13 @@
             </div>
             
             <p id="subtext">起始日：2024年8月17日</p>
-            
-            <div class="controls">
-                <button id="bg-btn" onclick="checkAuth()">更换背景</button>
-                <input type="file" id="bg-input" accept="image/*" style="display: none;">
-            </div>
         </div>
-
-        <div id="new-features-area"></div>
     </div>
+
+    <button id="bg-btn" onclick="checkAuth()">更换背景</button>
+    
+    <input type="file" id="bg-input" accept="image/*" style="display: none;">
 
     <script type="module" src="script.js"></script>
 </body>
 </html>
-
-    
-
-
-    

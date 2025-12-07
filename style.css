@@ -1,176 +1,110 @@
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    /* This loads your photo */
+    
+    /* Background Image */
     background: url('background.jpg') no-repeat center center fixed; 
-    /* This makes sure the photo covers the whole screen */
     background-size: cover; 
     
+    /* Centering Layout */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
     color: #333;
+    overflow: hidden; /* Stops scrolling */
 }
 
+/* === THE GLASS BOX === */
 .container {
     text-align: center;
     
-    /* GLASS EFFECT SETTINGS */
-    background: rgba(255, 255, 255, 0.25); /* 25% White (Very see-through) */
-    backdrop-filter: blur(15px);           /* The "Frost" blur effect */
-    -webkit-backdrop-filter: blur(15px);   /* Essential for your iPhone to see the blur */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle white edge */
+    /* Frosted Glass Effect */
+    background: rgba(255, 255, 255, 0.25); 
+    backdrop-filter: blur(15px);           
+    -webkit-backdrop-filter: blur(15px);   
+    border: 1px solid rgba(255, 255, 255, 0.3); 
     
-    /* Layout */
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow to lift it up */
-    max-width: 90%;
-    width: 400px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); 
     
-    /* Text Readability */
-    color: #000; /* Keep text dark so it stands out on the glass */
-    font-weight: 600; /* Make text slightly bolder to be easier to read */
+    max-width: 90%;
+    width: 350px;
+    color: #000;
 }
 
-#lang-btn {
-    background: none;
-    border: 1px solid #ccc;
-    padding: 5px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-}
-
-#lang-btn:hover {
-    background: #333;
-    color: white;
-    border-color: #333;
-}
-
-.counter-box {
-    margin: 30px 0;
-}
-
+/* Counter Number */
 #days-count {
     font-size: 5rem;
     font-weight: bold;
     color: #ff6b6b; 
     line-height: 1;
-    
-    /* ADD THIS LINE to make the number pop against any photo */
+    /* Glow to make it readable on any photo */
     text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8);
 }
 
 #label {
     font-size: 1.2rem;
-    color: #666;
-    margin-top: 10px;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 600px) {
-    #days-count { font-size: 4rem; }
-}
-
-/* =========================================
-   FLOATING BUTTONS (App Style)
-   ========================================= */
-
-/* 1. The Language Button (Top Right) */
-#lang-btn {
-    position: absolute; /* This unpins it from the center box */
-    top: 20px;          /* Distance from top */
-    right: 20px;        /* Distance from right */
-    
-    /* Visual Style */
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    font-weight: bold;
-    z-index: 100;       /* Ensures it sits ON TOP of the background */
-    margin: 0;          /* Reset any old margins */
-}
-
-#bg-btn {
-    /* POSITIONING (You can still change these numbers!) */
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-
-    /* TEXT STYLE (No more Camera Icon) */
-    background: rgba(255, 255, 255, 0.9); /* White background */
-    padding: 12px 24px;       /* Spacing inside the button */
-    border-radius: 30px;      /* Makes it a "Pill" shape */
-    font-size: 0.9rem;        /* Makes the text visible again */
-    font-weight: bold;
-    color: #333;              /* Dark grey text */
-    
-    /* CLEANUP */
-    border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Nice shadow */
-    cursor: pointer;
-    z-index: 100;
-}
-
-/* Hover Effect */
-#bg-btn:hover {
-    transform: translateY(-2px); /* Floats up slightly */
-    background: white;
-}
-
-/* Hover Effect (Optional) */
-#bg-btn:active {
-    transform: scale(0.95); /* Shrinks slightly when you tap it */
-}
-
-/* =========================================
-   FLOATING BUTTONS (App Style)
-   ========================================= */
-
-/* 1. The Language Button (Top Right) */
-#lang-btn {
-    position: absolute; 
-    top: 20px;          /* Stays at the top */
-    right: 20px;        /* Stays at the right */
-    
-    background: rgba(255, 255, 255, 0.4); /* Semi-transparent glass */
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255,255,255,0.6);
     color: #000;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+#title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #000;
+}
+
+#subtext {
+    font-weight: 600;
+    color: #000;
+}
+
+/* =========================================
+   FLOATING BUTTONS
+   ========================================= */
+
+/* 1. Language Button (Top Right) */
+#lang-btn {
+    position: fixed; /* Glued to screen */
+    top: 20px;      
+    right: 20px;    
+    
+    /* Glass Style */
+    background: rgba(255, 255, 255, 0.6); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.8);
     
     padding: 8px 15px;
     border-radius: 20px;
     font-size: 0.8rem;
-    cursor: pointer;
     font-weight: bold;
-    z-index: 100;
-    margin: 0;
+    color: #000;
+    cursor: pointer;
+    z-index: 999;
 }
 
-/* 2. The Change Background Button (Bottom Right) */
+/* 2. Background Button (Bottom Right) */
 #bg-btn {
-    position: absolute;
-    bottom: 30px;       /* Stays at the bottom */
-    right: 30px;        /* Stays at the right */
+    position: fixed; /* Glued to screen */
+    bottom: 30px;    
+    right: 30px;     
 
+    /* White Pill Style */
     background: rgba(255, 255, 255, 0.9);
     padding: 12px 24px;
     border-radius: 30px;
+    
     font-size: 0.9rem;
     font-weight: bold;
     color: #333;
-    
     border: none;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     cursor: pointer;
-    z-index: 100;
+    z-index: 999;
 }
 
 #bg-btn:hover {
