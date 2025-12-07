@@ -15,12 +15,23 @@ body {
 
 .container {
     text-align: center;
-    background: white;
+    
+    /* GLASS EFFECT SETTINGS */
+    background: rgba(255, 255, 255, 0.25); /* 25% White (Very see-through) */
+    backdrop-filter: blur(15px);           /* The "Frost" blur effect */
+    -webkit-backdrop-filter: blur(15px);   /* Essential for your iPhone to see the blur */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle white edge */
+    
+    /* Layout */
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow to lift it up */
     max-width: 90%;
     width: 400px;
+    
+    /* Text Readability */
+    color: #000; /* Keep text dark so it stands out on the glass */
+    font-weight: 600; /* Make text slightly bolder to be easier to read */
 }
 
 #lang-btn {
@@ -47,8 +58,11 @@ body {
 #days-count {
     font-size: 5rem;
     font-weight: bold;
-    color: #ff6b6b; /* Soft red color */
+    color: #ff6b6b; 
     line-height: 1;
+    
+    /* ADD THIS LINE to make the number pop against any photo */
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8);
 }
 
 #label {
