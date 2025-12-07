@@ -61,3 +61,55 @@ body {
 @media (max-width: 600px) {
     #days-count { font-size: 4rem; }
 }
+
+/* =========================================
+   FLOATING BUTTONS (App Style)
+   ========================================= */
+
+/* 1. The Language Button (Top Right) */
+#lang-btn {
+    position: absolute; /* This unpins it from the center box */
+    top: 20px;          /* Distance from top */
+    right: 20px;        /* Distance from right */
+    
+    /* Visual Style */
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 100;       /* Ensures it sits ON TOP of the background */
+    margin: 0;          /* Reset any old margins */
+}
+
+/* 2. The Camera Button (Bottom Right) */
+#bg-btn {
+    position: absolute;
+    bottom: 30px;       /* Distance from bottom */
+    right: 30px;        /* Distance from right */
+
+    /* Make it a round circle */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    
+    /* Make it look like a Camera Icon */
+    background-color: white;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/45/45010.png');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Drop shadow */
+    cursor: pointer;
+    font-size: 0;       /* Hides the text "Change Background" inside */
+    z-index: 100;
+}
+
+/* Hover Effect (Optional) */
+#bg-btn:active {
+    transform: scale(0.95); /* Shrinks slightly when you tap it */
+}
